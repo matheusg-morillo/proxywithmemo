@@ -29,7 +29,7 @@ public class Cache implements InvocationHandler {
     }
 
     @SuppressWarnings("unchecked")
-    public static <T> T withCache(T target) {
+    public static <T extends Cacheable<?, ?>> T withCache(T target) {
         return (T) Proxy.newProxyInstance(
                 target.getClass().getClassLoader(),
                 new Class[] { Cacheable.class },
