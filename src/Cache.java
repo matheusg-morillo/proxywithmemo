@@ -7,7 +7,7 @@ import java.util.Map;
 public class Cache implements InvocationHandler {
 
     public final Object target;
-    public final Map<Object[], Object> memo;
+    public final Map<Object, Object> memo;
 
     public Cache(Object target) {
         this.target = target;
@@ -16,12 +16,14 @@ public class Cache implements InvocationHandler {
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        if (memo.containsKey(args)) {
-            return memo.get(args);
+        Object arg = args[0];
+
+        if (memo.containsKey(arg)) {
+            return memo.get(arg);
         }
 
-        Object result = method.invoke(target, args);
-        memo.put(args, result);
+        Object result = method.invoke(target, arg);
+        memo.put(arg, result);
 
         return result;
     }
