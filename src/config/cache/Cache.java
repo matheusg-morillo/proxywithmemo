@@ -1,3 +1,5 @@
+package config.cache;
+
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
@@ -29,8 +31,8 @@ public class Cache implements InvocationHandler {
     }
 
     @SuppressWarnings("unchecked")
-    public static <T extends Cacheable<?, ?>> T withCache(T target) {
-        return (T) Proxy.newProxyInstance(
+    public static <I, O> Cacheable<I, O> withCache(Cacheable<I, O> target) {
+        return (Cacheable<I, O>) Proxy.newProxyInstance(
                 target.getClass().getClassLoader(),
                 new Class[] { Cacheable.class },
                 new Cache(target)

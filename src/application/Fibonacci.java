@@ -1,3 +1,7 @@
+package application;
+
+import config.cache.Cacheable;
+
 public class Fibonacci implements Cacheable<Integer, Integer> {
 
     @Override
