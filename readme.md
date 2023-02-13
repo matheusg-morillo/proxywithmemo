@@ -38,7 +38,11 @@ class Cacheable~I, O~ {
 **Then:**
 ```java
     Cacheable<Integer, Integer> fibonacci = Cache.withCache(new Fibonacci());
+    System.out.println(fibonacci.of(5));
+    System.out.println(fibonacci.of(5));
 ```
+
+Once we run this program, we'll notice that the first `fib(5)` is calculated and stored, so in the second run, the cached value is used.
 
 ## Limitations:
 - Cacheable just accepts one input and one output. Multiple args can be wrapped into a collection.
