@@ -19,6 +19,26 @@ to memoize inputs and outputs for the fibonacci function.
 ## How to use:
 Wrap a `Cacheable` instance in the `Cache.withCache` function.
 
+#### Eg.:
+
+**Given that:**
+
+```mermaid
+classDiagram
+
+Fibonacci --|> Cacheable
+
+class Cacheable~I, O~ {
+ <<interface>>
+    
+ + of(I input) O
+}
+```
+**Then:**
+```java
+    Cacheable<Integer, Integer> fibonacci = Cache.withCache(new Fibonacci())
+```
+
 ## Limitations:
 - Cacheable just accepts one input and one output. Multiple args can be wrapped into a collection.
 - Recursive calls cannot be memoized, since within the method scope, the proxy cannot be reached, therefore the actual method is called.
