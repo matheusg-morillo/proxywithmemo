@@ -37,7 +37,7 @@ class Cacheable~I, O~ {
 ```
 **Then:**
 ```java
-    Cacheable<Integer, Integer> fibonacci = Cache.withCache(new Fibonacci())
+    Cacheable<Integer, Integer> fibonacci = Cache.withCache(new Fibonacci());
 ```
 
 ## Limitations:
