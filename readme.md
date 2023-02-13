@@ -26,13 +26,14 @@ Wrap a `Cacheable` instance in the `Cache.withCache` function.
 ```mermaid
 classDiagram
 
-Fibonacci --|> Cacheable
+Fibonacci --|> Cacheable~Integer, Integer~
 
 class Cacheable~I, O~ {
  <<interface>>
     
- + of(I input) O
+ of(Integer input) Integer
 }
+
 ```
 **Then:**
 ```java
